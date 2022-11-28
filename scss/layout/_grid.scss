@@ -1,0 +1,48 @@
+.row {
+    max-width: $grid-width;
+    margin: 0 auto;
+
+    // & ~ & {} === &:not(:last-child)
+    margin-top: $grid-row-gap;
+
+    @include clearfix;
+
+    [class^="col-"] {
+      // height: $grid-height;    // just used for test
+      // padding: 0 1.2rem;
+      float: left;
+
+      font-size: 1.4rem;
+      // line-height: $grid-height;
+      // color: $color-white;
+      // background-color: orangered;
+
+      &:not(:last-child) {
+        margin-right: $grid-col-gap;
+      }
+    }
+
+    .col-1-of-2,
+    .col-2-of-4 {
+      width: calc((100% - #{$grid-col-gap}) / 2);
+    }
+    
+    .col-1-of-3 {
+      width: calc((100% - 2 * #{$grid-col-gap}) / 3);
+    
+    }
+    
+    .col-1-of-4 {
+      width: calc((100% - 3 * #{$grid-col-gap}) / 4);
+    
+    }
+    
+    .col-2-of-3 {
+      width: calc((100% - 2 * #{$grid-col-gap}) / 3 * 2 + #{$grid-col-gap});
+    
+    }
+    
+    .col-3-of-4 {
+      width: calc((100% - 3 * #{$grid-col-gap}) / 4 * 3 + (2 * #{$grid-col-gap}));
+    }
+}
