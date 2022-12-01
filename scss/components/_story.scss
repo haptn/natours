@@ -1,0 +1,83 @@
+.story {
+  width: 75%;
+  margin: 0 auto;
+  padding: 6rem;
+
+  box-shadow: 0 3rem 6rem rgba($color-black, 0.1);
+  background-color: rgba($color-white, .5);
+  transform: skewX(-12deg);
+
+  & > * {
+    transform: skewX(12deg);
+  }
+
+  &__shape {
+    width: 15rem;
+    height: 15rem;
+    margin-right: 3rem;
+    overflow: hidden;
+
+    float: left;
+    position: relative;
+    z-index: 2;   // if without this line, figure cannot be "touched" any more
+
+    border-radius: 50%;    // same purpose with clip-path (using in tutorial), but much shorter
+    -webkit-shape-outside: circle(50% at 50% 50%);
+    shape-outside: circle(50% at 50% 50%);
+    // -webkit-clip-path: circle(50% at 50% 50%);
+    // clip-path: circle(50% at 50% 50%);
+
+    * {
+      transition: all .25s;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      -o-object-fit: cover;
+      transform: scale(1.4);
+    }
+
+    &:hover {
+      img {
+        transform: scale(1);
+        filter: blur(3px) brightness(75%);
+      }
+  
+      figcaption {
+        opacity: 1;
+        // transform: translateY(-50%);
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+
+  &__caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 20%);
+
+    font-size: 1.7rem;
+    color: $color-white;
+    text-align: center;
+    text-transform: uppercase;
+
+    opacity: 0;
+    backface-visibility: hidden;
+  }
+
+  // &:hover {
+  //   img {
+  //     transform: scale(1);
+  //     filter: blur(3px) brightness(75%);
+  //   }
+
+  //   figcaption {
+  //     opacity: 1;
+  //     // transform: translateY(-50%);
+  //     transform: translate(-50%, -50%);
+  //   }
+  // }
+}
